@@ -2,86 +2,97 @@
 
 void main()
 {
-	// 조건문이란?
-	// 어떤 조건이 주어질 때 해당 조건에 따라
-	// 동작을 수행하도록 실행하는 명령문입니다.
-		
-	// 관계 연산자
-	/*
-	// 두 개의 피연산자의 값을 비교하여 그 결과를 0 또는 1이라는
-	// 값을 나타내는 연산자입니다.
-	int num1 = 5 < 10;
-	int num2 = 5 > 10;
-	int num3 = 10 <= 10;
-	int num4 = 5 >= 10;
-	int num5 = 1 == 1;
-	int num6 = 1 != 1;
+    // switch문
+    /*
+    // 어떤 결과에 따라 그 결과부터 실행되는 명령문입니다.
 
-	printf("num1의 값 : %d\n", num1);
-	printf("num2의 값 : %d\n", num2);
-	printf("num3의 값 : %d\n", num3);
-	printf("num4의 값 : %d\n", num4);
-	printf("num5의 값 : %d\n", num5);
-	printf("num6의 값 : %d\n", num6);
-	*/
+    int count = 100;
 
-	// if 문
-	/*
-	// 어떤 특정한 조건을 비교하여 조건이 "참"이면 
-	// 실행되는 명령문입니다.
+    switch (count)
+    {
+        // break문이란?
+        // 특정한 지점에서 분기를 탈출하는 제어문입니다.
+        case 0: printf("던전 이동\n");
+            break;
+        case 1: printf("마을 이동\n");
+            break;
+        case 2: printf("광산 이동\n");
+            break;
+        default: printf("잘못된 값이 들어왔습니다.");
+    }
 
-	int health = 0;
- 
-	if (health <= 0) 
-	{
-		printf("Game Over");
-	}
-	*/
+    char check = 'A';
 
-	// else if 문
-	/*
-	// if 문의 조건이 틀릴 때 else if문의 조건이 맞다면 실행되는
-	// 명령문입니다.
-	int level = 10; 
+    // switch 문에는 조건식으로 실수형 변수와 실수형 상수를
+    // 사용할 수 없습니다.
+    switch (check)
+    {
+        // break문이란?
+        // 특정한 지점에서 분기를 탈출하는 제어문입니다.
+        case 'A': printf("마법사\n");
+             break;
+        case 'B': printf("도적\n");
+             break;
+        case 'C': printf("전사\n");
+            break;
+        default: printf("잘못된 값이 들어왔습니다.");
+    }
+    */
 
-	if (level == 5)
-	{
-		printf("전직");
-		// if 문에 연결된 모든 조건문의 조건이 맞을 때
-		// 가장 위에 있는 조건문만 실행됩니다.
-	}
-	else if (level == 10)
-	{
-		printf("승급");
+    // 반복문이란?
+    // 프로그램 내에서 특정한 작업을 반복적으로
+    // 수행하는 명령문입니다.
 
-		if (level == 10)
-		{
-			printf("2차 승급");
-		}
-	}
-	else if (level == 30)
-	{
-		printf("각성");
-	}
-	*/
+    // 증감 연산자란?
+    /*
+    // 피연산자를 하나씩 증가시키거나 감소시킬 때 사용하는 연산자입니다.
 
-	// else 문
-	// if 문과 else if 문의 조건이 다 틀리면 실행되는 명령문입니다.
+    // 전위 증가 연산자
+    // 변수의 값을 증감시킨 후에 연산을 수행합니다.
+    int value = 0;
+    int damage = 10;
 
-	int exp = 1000;
+    int result = ++value;
+    int health = --damage;
 
-	if (exp == 250)
-	{
-		printf("??? 아이템 착용 가능");
-	}
-	else if (exp == 500)
-	{
-		printf("??? 아이템 구매 가능");
-	}
-	else
-	{
-		printf("??? 아이템 판매 가능");
-	}
+    printf("result 변수의 값 : %d\n", result);
+    printf("health 변수의 값 : %d\n", health);
 
+    // 후위 증가 연산자
+    // 연산을 수행한 다음 변수의 값을 증감시킵니다.
+    result = value++;
+    health = damage--;
+
+    printf("result 변수의 값 : %d\n", result);
+    printf("health 변수의 값 : %d\n", health);
+    */
+
+    // for문이란?
+    // 초기식을 연산하여 조건식의 결과에 따라 특정한
+    // 횟수만큼 반복하는 반복문입니다.
+   
+    // int i = 0; <- 초기식 설정
+    // i < 5; <- 조건식 설정
+    // i++ <- 증감식 설정
+
+    // printf("Action") <- 반복할 내용
+    for (int i = 0; i < 5; i++)
+    {
+        printf("Action\n");
+    }
+
+    // 1 ~ 10 까지의 합
+    /*
+    int result = 0;
+
+    for (int i = 1; i <= 10; i++)
+    {
+        result += i;
+    }
+
+    printf("result 변수의 값 : %d", result);
+    */
+  
+    // 5 4 3 2 1
 
 }
