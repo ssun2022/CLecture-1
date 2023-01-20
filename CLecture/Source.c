@@ -1,71 +1,87 @@
 #include <stdio.h>
+#include <windows.h>
+#include <time.h>
 
 void main()
 {
-   	// 2중 for문
-    /*
-    for (int i = 0; i < 3; i++)
-    {
+	// 랜덤 함수
+	/*
+	// rand : 0 ~ 32767 사이의 난수 값을 반환합니다.
+	
+	// rand() 함수는 프로그램이 생성될 때 값이 정해지기 
+	// 때문에 프로그램을 여러 번 실행시켜도 동일한 값이 나타납니다.
 
-        for (int j = 0; j < 3; j++)
-        {
-            printf("Unity\n");
-        }
+	// srand() 함수는 rand() 함수에 사용되는 수를 초기화하는 함수입니다.
+	// 매개변수에 seed값을 이용하여 랜덤한 값을 생성합니다.
+	srand(time(NULL));
 
-        printf("Unreal\n");
-    }
+	// time() 함수는 UCT 기준으로 1970년 1월 1일 0시 0분 0초부터 경과된
+	// 시간을 초(sec)로 반환하는 함수
+
+	for(int i = 0; i < 10; i++)
+	{
+		// 0 ~ 9 사이의 값만 나오도록 해볼게요.
+		printf("랜덤한 값 : %d\n", rand() % 10 + 1);
+	}
+	*/
+
+	// 표준 입력 함수
+	/*
+	// 여러 종류의 데이터를 다양한 서식에 맞추어 입력해주는 함수입니다.
+	
+	int value = 0;
+
+	scanf_s("%d", &value);
+
+	printf("value 값 : %d", value);
     */
 
-    // 구구단
-    /*
-    // 1 * 1 = 1 ~ 9 * 9 = 81
+	// UP-DOWN 게임
+	/*
+	int life = 5;
+	
+	srand(time(NULL));
 
-    for (int i = 1; i < 10; i++)
-    {
-        for (int j = 1; j < 10; j++)
-        {
-            printf("%d x %d = %d\n", i, j, i * j);
-        }
+	int computer = rand() % 50 + 1;
+	int answer = 0;
 
-        printf("\n");
-    }
-    */
+	while (life > 0) 
+	{
+		printf("컴퓨터가 가지고 있는 값 : ");
+		scanf_s("%d", &answer);
 
-    // while 문이란?
-    /*
-    // 특정 조건을 만족할 때까지 계속해서 주어진 명령문을 실행하는
-    // 반복문입니다.
+		if (answer > computer)
+		{
+			printf("컴퓨터가 가지고 있는 수 보다 큽니다.\n");
+			life--;
+		}
+		else if (answer < computer)
+		{
+			printf("컴퓨터가 가지고 있는 수 보다 작습니다.\n");
+			life--;
+		}
+		else if (answer == computer)
+		{
+			printf("컴퓨터가 가지고 있는 수를 알아냈습니다.");
+			break;
+		}
+	}
 
-    int count = 5;
+	if (life == 0)
+	{
+		printf("컴퓨터가 가지고 있는 수를 알아내지 못했습니다.\n");
+		printf("컴퓨터가 가지고 있던 값 : %d", computer);
+	}
+	*/
 
-    while (count) // <- 게임 루프
-    {
-        printf("Game Start\n");
+	// 주소 연산자
+	// 변수의 주소 값을 반환하는 연산자입니다.
 
-        count--;
-    }
-    */
+	int data = 10;
+	// 변수의 메모리 프로그램이 실행될 때마다 계속 바뀝니다.
 
-    // do-while 문이란?
-    /*
-    // 조건과 상관없이 한 번의 작업을 수행한 다음
-    // 조건에 따라 명령문을 실행하는 반복문입니다.
-    do
-    {
-        printf("실행\n");
-
-    } while (0);
-    */
-
-    // continue 문이란?
-    // 해당 조건문만 실행하지 않고, 반복문은 이어서 실행하는 제어문입니다.
-    for (int i = 1; i <= 10; i++)
-    {
-        if (i % 3 == 0)
-            continue;
-
-        printf("i의 값 : %d\n", i);
-    }
+	// %p : 메모리 주소를 확인하는 서식 지정자
+	printf("data 변수의 주소 : %p", &data);
 
 
 }
