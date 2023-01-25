@@ -1,87 +1,96 @@
 #include <stdio.h>
-#include <windows.h>
-#include <time.h>
+
+// #define 식별자 값
+#define SIZE 100
+
+#define CALL printf("call")
 
 void main()
 {
-	// 랜덤 함수
+	// 자료형 변환이란?
+	// 서로 다른 자료형을 가지고 있는 변수끼리 연산이 이루어질 때
+	// 기존에 저장했던 자료형을 다른 자료형으로 변환하는 과정입니다.
+
+	// 암묵적 형 변환
+	// 서로 다른 자료형으로 연산이 이루어질 때 자료형의 크기가 큰 자료형
+	// 으로 변환되는 과정입니다.
+
+	// 1. 대입 연산 시 발생하는 암묵적 형 변환
 	/*
-	// rand : 0 ~ 32767 사이의 난수 값을 반환합니다.
-	
-	// rand() 함수는 프로그램이 생성될 때 값이 정해지기 
-	// 때문에 프로그램을 여러 번 실행시켜도 동일한 값이 나타납니다.
+	int integer = 10;       
+	float decimal = 6.5f; 
+         
+	float result = integer + decimal;
 
-	// srand() 함수는 rand() 함수에 사용되는 수를 초기화하는 함수입니다.
-	// 매개변수에 seed값을 이용하여 랜덤한 값을 생성합니다.
-	srand(time(NULL));
-
-	// time() 함수는 UCT 기준으로 1970년 1월 1일 0시 0분 0초부터 경과된
-	// 시간을 초(sec)로 반환하는 함수
-
-	for(int i = 0; i < 10; i++)
-	{
-		// 0 ~ 9 사이의 값만 나오도록 해볼게요.
-		printf("랜덤한 값 : %d\n", rand() % 10 + 1);
-	}
+	printf("result 변수의 값 : %f", result);
 	*/
 
-	// 표준 입력 함수
+	// 2. 대입 연산 시 발생하는 데이터 손실 과정 
 	/*
-	// 여러 종류의 데이터를 다양한 서식에 맞추어 입력해주는 함수입니다.
-	
-	int value = 0;
+	int data = 129;
 
-	scanf_s("%d", &value);
+	char value = data;
 
-	printf("value 값 : %d", value);
-    */
-
-	// UP-DOWN 게임
-	/*
-	int life = 5;
-	
-	srand(time(NULL));
-
-	int computer = rand() % 50 + 1;
-	int answer = 0;
-
-	while (life > 0) 
-	{
-		printf("컴퓨터가 가지고 있는 값 : ");
-		scanf_s("%d", &answer);
-
-		if (answer > computer)
-		{
-			printf("컴퓨터가 가지고 있는 수 보다 큽니다.\n");
-			life--;
-		}
-		else if (answer < computer)
-		{
-			printf("컴퓨터가 가지고 있는 수 보다 작습니다.\n");
-			life--;
-		}
-		else if (answer == computer)
-		{
-			printf("컴퓨터가 가지고 있는 수를 알아냈습니다.");
-			break;
-		}
-	}
-
-	if (life == 0)
-	{
-		printf("컴퓨터가 가지고 있는 수를 알아내지 못했습니다.\n");
-		printf("컴퓨터가 가지고 있던 값 : %d", computer);
-	}
+	printf("value의 값 : %d", value);
 	*/
 
-	// 주소 연산자
-	// 변수의 주소 값을 반환하는 연산자입니다.
+	// 3. 정수의 승격
+	/*
+	char x = 10;
+	short y = 20;
 
-	int data = 10;
-	// 변수의 메모리 프로그램이 실행될 때마다 계속 바뀝니다.
+	printf("x + y의 데이터 크기 : %d", sizeof(x + y));
+	*/
 
-	// %p : 메모리 주소를 확인하는 서식 지정자
-	printf("data 변수의 주소 : %p", &data);
+	// 명시적 형 변환
+	/*
+	// 연산이 이루어지기 전에 사용자 직접 자료형을 변환하는 과정입니다.
+	int health = 10;
+	int armor = 3;
+
+	float result = (float)health / armor;
+
+	printf("result 변수의 값 : %f", result);
+	*/
+
+	// 오버플로우란?
+	/*
+	// 특정한 자료형이 표현할 수 있는 최댓값의 범위를 넘어서
+	// 연산을 수행하는 과정입니다.
+
+	// char 값의 범위 : -128 ~ 127
+	char table = 128;
+
+	printf("table 변수의 값 : %d", table);
+	*/
+
+	// 언더플로우란?
+	/*
+	// 특정한 자료형이 표현할 수 있는 최솟값의 범위를 넘어서 연산을
+	// 수행하는 과정입니다.
+
+	char data = -129;
+
+	printf("data의 값 : %d", data);
+	*/
+
+	// 부호 없는 자료형
+	/*
+	unsigned char signal = 255;
+	printf("signal 변수의 값 : %d", signal);
+	*/
+
+	// 매크로
+	// 프로그램 내에서 특정한 데이터가 문자열로 정의되고
+	// 치환되는 과정입니다.
+
+	printf("size의 값 : %d\n", SIZE);
+
+	CALL;
+	// 매크로의 경우는 자료형이 존재하지 않므으로
+	// 메모리 공간을 가지고 있지 않습니다.
+	// SIZE = 300;
+
 
 
 }
