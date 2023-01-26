@@ -62,14 +62,11 @@ void main()
 	*/
 
 	// 상수 지시 포인터
-	
+	/*
 	int x = 20;
 	int y = 30;
-
-	                 // 8 byte
-	const int * ptr; // [ ]
-
-	ptr = &x; // [x의 시작주소]----->[x] 
+	                  
+	const int * ptr = &x; // [x의 시작주소]----->[x] 
 
 	x = 300;
 
@@ -79,12 +76,18 @@ void main()
 
 	ptr = &y;
 	y = 1000;
-	
+	*/
 
 	// 포인터 상수
-	//int monster1 = 10;
-	//int monster2 = 20;
+	int monster1 = 10;
+	int monster2 = 20;
 
-	//int* const ptr = &monster1;
+	// [monster1의 시작주소] ------> monster1
+	int * const ptr = &monster1;
 
+	*ptr = 50;
+
+	monster1 = 300;
+
+	// ptr = &monster2;
 }
