@@ -1,96 +1,90 @@
 #include <stdio.h>
 
-// #define 식별자 값
-#define SIZE 100
-
-#define CALL printf("call")
-
 void main()
 {
-	// 자료형 변환이란?
-	// 서로 다른 자료형을 가지고 있는 변수끼리 연산이 이루어질 때
-	// 기존에 저장했던 자료형을 다른 자료형으로 변환하는 과정입니다.
+	// 포인터란?
+	// 메모리의 주솟값을 저장할 수 있는 변수입니다.
 
-	// 암묵적 형 변환
-	// 서로 다른 자료형으로 연산이 이루어질 때 자료형의 크기가 큰 자료형
-	// 으로 변환되는 과정입니다.
-
-	// 1. 대입 연산 시 발생하는 암묵적 형 변환
+	// 기초 포인터
 	/*
-	int integer = 10;       
-	float decimal = 6.5f; 
-         
-	float result = integer + decimal;
+	int data = 100;
+	int count = 5;
 
-	printf("result 변수의 값 : %f", result);
+	int * ptr = &data;
+
+	// 포인터 변수도 자신의 메모리 공간을 가지고 있으며,
+	// 포인터 변수에 변수의 주소를 저장하게 되면 해당 변수
+	// 의 시작 주소를 가리키게 됩니다.
+	printf("data의 주소 : %p\n", &data);
+
+	printf("ptr의 값 : %p\n", ptr);
+	printf("ptr의 주소 : %p\n", &ptr);
+
+	ptr = &count;
+
+	printf("count의 주소 : %p\n", &count);
+
+	printf("ptr의 값 : %p\n", ptr);
 	*/
 
-	// 2. 대입 연산 시 발생하는 데이터 손실 과정 
+	// 포인터가 가리키는 자료형
 	/*
-	int data = 129;
+	char alphabet = 'A';
+	int value = 10;
+	double decimal = 7.5;
 
-	char value = data;
-
-	printf("value의 값 : %d", value);
+	// 포인터 변수는 가리키는 메모리 공간의 자료형을 알 수 없으므로
+	// 포인터가 가리키는 메모리의 자료형을 정확하게 선언해주어야 합니다.
+	char * cPtr = &value;
+	int * iPtr = &decimal;
+	double * dPtr = &alphabet;
+	
+	printf("cPtr이 가리키는 메모리의 값 : %c\n", *cPtr);
+	printf("iPtr이 가리키는 메모리의 값 : %d\n", *iPtr);
+	printf("dPtr이 가리키는 메모리의 값 : %lf\n", *dPtr);
 	*/
 
-	// 3. 정수의 승격
+	// 포인터 변수의 크기
 	/*
-	char x = 10;
-	short y = 20;
+	char character = 'X';
 
-	printf("x + y의 데이터 크기 : %d", sizeof(x + y));
+	char * charPtr = &character;
+
+	printf("charPtr이 가리키는 메모리의 값 : %c\n", *charPtr);
+
+	*charPtr = 'E';
+
+	printf("charPtr이 가리키는 메모리의 값 : %c\n", *charPtr);
+
+	// 포인터 변수의 크기는 CPU가 한 번에 처리할 수 있는 크기로 정해지며,
+	// 한 번에 처리할 수 있는 크기는 운영체제에 따라 크기가 결정됩니다.
+	printf("charPtr의 크기 : %d", sizeof(charPtr));
 	*/
 
-	// 명시적 형 변환
-	/*
-	// 연산이 이루어지기 전에 사용자 직접 자료형을 변환하는 과정입니다.
-	int health = 10;
-	int armor = 3;
+	// 상수 지시 포인터
+	
+	int x = 20;
+	int y = 30;
 
-	float result = (float)health / armor;
+	                 // 8 byte
+	const int * ptr; // [ ]
 
-	printf("result 변수의 값 : %f", result);
-	*/
+	ptr = &x; // [x의 시작주소]----->[x] 
 
-	// 오버플로우란?
-	/*
-	// 특정한 자료형이 표현할 수 있는 최댓값의 범위를 넘어서
-	// 연산을 수행하는 과정입니다.
+	x = 300;
 
-	// char 값의 범위 : -128 ~ 127
-	char table = 128;
+	// 포인터 변수를 상수로 선언하여, 포인터 변수가 가리키고 있는 주소에
+	// 존재하는 값을 변경할 수 없도록 설정합니다.
+	// *ptr = 300;
 
-	printf("table 변수의 값 : %d", table);
-	*/
+	ptr = &y;
+	y = 1000;
+	
 
-	// 언더플로우란?
-	/*
-	// 특정한 자료형이 표현할 수 있는 최솟값의 범위를 넘어서 연산을
-	// 수행하는 과정입니다.
+	// 포인터 상수
+	//int monster1 = 10;
+	//int monster2 = 20;
 
-	char data = -129;
-
-	printf("data의 값 : %d", data);
-	*/
-
-	// 부호 없는 자료형
-	/*
-	unsigned char signal = 255;
-	printf("signal 변수의 값 : %d", signal);
-	*/
-
-	// 매크로
-	// 프로그램 내에서 특정한 데이터가 문자열로 정의되고
-	// 치환되는 과정입니다.
-
-	printf("size의 값 : %d\n", SIZE);
-
-	CALL;
-	// 매크로의 경우는 자료형이 존재하지 않므으로
-	// 메모리 공간을 가지고 있지 않습니다.
-	// SIZE = 300;
-
-
+	//int* const ptr = &monster1;
 
 }
