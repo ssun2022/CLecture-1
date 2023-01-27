@@ -2,92 +2,119 @@
 
 void main()
 {
-	// 포인터란?
-	// 메모리의 주솟값을 저장할 수 있는 변수입니다.
-
-	// 기초 포인터
+	// 배열이란?
 	/*
-	int data = 100;
-	int count = 5;
-
-	int * ptr = &data;
-
-	// 포인터 변수도 자신의 메모리 공간을 가지고 있으며,
-	// 포인터 변수에 변수의 주소를 저장하게 되면 해당 변수
-	// 의 시작 주소를 가리키게 됩니다.
-	printf("data의 주소 : %p\n", &data);
-
-	printf("ptr의 값 : %p\n", ptr);
-	printf("ptr의 주소 : %p\n", &ptr);
-
-	ptr = &count;
-
-	printf("count의 주소 : %p\n", &count);
-
-	printf("ptr의 값 : %p\n", ptr);
-	*/
-
-	// 포인터가 가리키는 자료형
-	/*
-	char alphabet = 'A';
-	int value = 10;
-	double decimal = 7.5;
-
-	// 포인터 변수는 가리키는 메모리 공간의 자료형을 알 수 없으므로
-	// 포인터가 가리키는 메모리의 자료형을 정확하게 선언해주어야 합니다.
-	char * cPtr = &value;
-	int * iPtr = &decimal;
-	double * dPtr = &alphabet;
+	// 같은 자료형의 변수들로 이루어진 유한 집합입니다.
 	
-	printf("cPtr이 가리키는 메모리의 값 : %c\n", *cPtr);
-	printf("iPtr이 가리키는 메모리의 값 : %d\n", *iPtr);
-	printf("dPtr이 가리키는 메모리의 값 : %lf\n", *dPtr);
+	//   4     4     4  = 12 byte
+	//   0	   1     2
+	// [100] [200] [300]
+	int room[3];
+
+	// 배열의 경우 첫 번째 원소는 0부터 시작합니다.
+	room[0] = 100;
+	room[1] = 200;
+	room[2] = 300;
+
+	// 배열은 원하는 원소에 원하는 값을 저장할 수 있으며,
+	// 배열의 크기는 컴파일이 되는 시점부터 고정된 메모리
+	// 공간을 가지게 됩니다.
+
+	for (int i = 0; i < 3; i++)
+	{
+		printf("room[%d]의 값 : %d\n", i, room[i]);
+	}
 	*/
 
-	// 포인터 변수의 크기
+	// 배열 초기화
 	/*
-	char character = 'X';
+	// [0] = 1.5f , [1] = 2.5f ~ 
+	float space[5] = { 1.5f, 2.5f, 3.5f, 4.5f, 5.5f };
 
-	char * charPtr = &character;
+	for (int i = 0; i < 5; i++)
+	{
+		printf("space[%d]의 값 : %f\n", i, space[i]);
+	}
 
-	printf("charPtr이 가리키는 메모리의 값 : %c\n", *charPtr);
+	// 배열의 크기는 생략할 수 있으며, 초기화 목록에서 설정한
+	// 인덱스에 따라 배열의 크기가 결정됩니다.
+	int dataTable[ ] = {10, 20, 30};
 
-	*charPtr = 'E';
-
-	printf("charPtr이 가리키는 메모리의 값 : %c\n", *charPtr);
-
-	// 포인터 변수의 크기는 CPU가 한 번에 처리할 수 있는 크기로 정해지며,
-	// 한 번에 처리할 수 있는 크기는 운영체제에 따라 크기가 결정됩니다.
-	printf("charPtr의 크기 : %d", sizeof(charPtr));
+	for (int i = 0; i < 3; i++)
+	{
+		printf("dataTable[%d]의 값 : %d\n", i, dataTable[i]);
+	}
 	*/
 
-	// 상수 지시 포인터
+	// 배열의 주소
 	/*
-	int x = 20;
-	int y = 30;
-	                  
-	const int * ptr = &x; // [x의 시작주소]----->[x] 
+	int value[3] = { 5,10,15 };
 
-	x = 300;
+	printf("value 배열의 주소 : %p\n", value);
+	printf("value[0]의 주소 : %p\n", &value[0]);
 
-	// 포인터 변수를 상수로 선언하여, 포인터 변수가 가리키고 있는 주소에
-	// 존재하는 값을 변경할 수 없도록 설정합니다.
-	// *ptr = 300;
+	// 배열은 연속적인 메모리 공간을 가지며, 배열의 이름은
+	// 배열의 시작 주소를 의미합니다.
 
-	ptr = &y;
-	y = 1000;
+	int * ptr = value;
+	*ptr = 9999;
+
+	printf("value[0]의 값 : %d\n", value[0]);
+
+	ptr = ptr + 1;
+
+	*ptr = 3333;
+
+	printf("value[1]의 값 : %d\n", value[1]);
 	*/
 
-	// 포인터 상수
-	int monster1 = 10;
-	int monster2 = 20;
+	// 최댓값과 최솟값
+	/*
+	int count[5] = { 1, 33, 7, 2, 6 };
 
-	// [monster1의 시작주소] ------> monster1
-	int * const ptr = &monster1;
+	int max = 0;
+	int min = 9999;
 
-	*ptr = 50;
+	for (int i = 0; i < 5; i++)
+	{
+		if (max < count[i])
+		{
+			max = count[i];
+		}
+				
+		if (min > count[i])
+		{
+			min = count[i];
+		}
+	}
 
-	monster1 = 300;
+	printf("최댓값 : %d\n", max);
+	printf("최솟값 : %d\n", min);
+    */
 
-	// ptr = &monster2;
+	// 범용 포인터란?
+	// 자료형이 정해지지 않은 상태로 모든 자료형을 저장할 수 있는
+	// 포인터입니다.
+
+	char grade = 'A';
+	int age = 19;
+	float weight = 70.5f;
+
+	void * vPtr = &grade;
+
+	// 범용 포인터는 현재 가리키는 자료형이 정해져 있지 않아
+	// 값을 변경할 수 없습니다.
+	// *vPtr = 'B';
+
+	*(char*)vPtr = 'B';
+	printf("grade의 값 : %c\n", grade);
+
+	// 범용 포인터로 변수의 메모리에 접근하려면 범용 포인터가 가리키는
+	// 변수의 자료형으로 형 변환을 해주어야 합니다.
+
+	vPtr = &age;
+	*(int*)vPtr = 26;
+	printf("age의 값 : %d\n", age);
+
+
 }
