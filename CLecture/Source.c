@@ -1,120 +1,106 @@
 #include <stdio.h>
 
-void main()
+// 함수의 선언
+// (자료형) (함수의 이름) (매개 변수)
+// {
+
+// }
+
+void Function()
 {
-	// 배열이란?
+	printf("유닛 생성\n");
+	printf("유닛 생성\n");
+	printf("유닛 생성\n");
+	printf("유닛 생성\n");
+	printf("유닛 생성\n");
+}
+
+// 함수의 경우 자료형과 반환하는 값의 형태가 일치하지
+// 않으면 원하는 값을 없을 수 없으며, 같은 이름의 함수를
+// 중복으로 선언할 수 없습니다.
+int Calculator()
+{
+	return 10;
+}
+
+// 매개 변수란?
+// 함수의 정의에서 전달받은 인수를 함수 내부로 전달하기
+// 위해 사용하는 변수입니다.
+void Damage(int x)
+{
+	// 매개 변수는 함수 내부에서만 연산이 이루어지며,
+	// 함수가 종료되면 메모리에서 사라지며, 여러 개의
+	// 매개 변수를 생성할 수 있습니다.
+	printf("매개 변수의 값 : %d\n", x);
+}
+
+int main()
+{
+	// 문자열이란?
+	// 연속적인 메모리 공간에 저장된 문자 변수의 집합입니다.
+
+	// 포인터를 이용한 문자열
 	/*
-	// 같은 자료형의 변수들로 이루어진 유한 집합입니다.
-	
-	//   4     4     4  = 12 byte
-	//   0	   1     2
-	// [100] [200] [300]
-	int room[3];
+	const char * character = "School";
 
-	// 배열의 경우 첫 번째 원소는 0부터 시작합니다.
-	room[0] = 100;
-	room[1] = 200;
-	room[2] = 300;
+	// character[0] = 'T';
 
-	// 배열은 원하는 원소에 원하는 값을 저장할 수 있으며,
-	// 배열의 크기는 컴파일이 되는 시점부터 고정된 메모리
-	// 공간을 가지게 됩니다.
+	// 문자열의 경우 포인터를 이용하여 문자열 상수를 가리키도록
+	// 할 수 있으며, 문자열 상수는 데이터 영역의 읽기 전용 공간에
+	// 저장되기 때문에 문자열의 값을 변경할 수 없습니다.
+
+	printf("character의 값 : %s\n", character);
+
+	character = "Student";
+
+	// 문자열은 공백도 함께 메모리 공간에 포함하여 크기가
+	// 결정되며, 마지막에 문자열의 끝을 알려주는 제어 문자가 
+	// 추가됩니다.
+
+	printf("character의 값 : %s\n", character);
+	*/
+
+	// 배열을 이용한 문자열
+	/*
+	char string [ ] = "Academy";
+	char name [ ] = "Jam\0es";
+
+	// 문자열의 경우 서로 연속적인 메모리 공간으로
+	// 연결되어 있지만, 문자 배열 사이에 무효의 문자를
+	// 넣게 되면 무효의 문자까지만 문자열을 출력합니다.
+	printf("name의 값 : %s\n", name);
+	printf("string의 값 : %s\n", string);
+
+	string[0] = 'S';
+
+	// 포인터 상수이기 때문에 새로운 메모리 공간을
+	// 할당할 수 없습니다.
+	// string = name;
+
+	printf("string의 값 : %s\n", string);
+	*/
+
+	// 함수란?
+	/*
+	// 하나의 특별한 목적의 작업을 수행하기 위해
+	// 독립적으로 설계된 코드의 집합입니다.
+	Function();
 
 	for (int i = 0; i < 3; i++)
 	{
-		printf("room[%d]의 값 : %d\n", i, room[i]);
+		printf("업그레이드\n");
 	}
+
+	printf("Calculator가 들고 있는 값 : %d\n", Calculator());
 	*/
 
-	// 배열 초기화
-	/*
-	// [0] = 1.5f , [1] = 2.5f ~ 
-	float space[5] = { 1.5f, 2.5f, 3.5f, 4.5f, 5.5f };
+	return 1;
 
-	for (int i = 0; i < 5; i++)
-	{
-		printf("space[%d]의 값 : %f\n", i, space[i]);
-	}
+	// 인수란?
+	// 함수가 호출될 때 매개 변수에 실제로 전달되는 값입니다.
+	Damage(10);
+	Damage(5);
+	Damage(25);
 
-	// 배열의 크기는 생략할 수 있으며, 초기화 목록에서 설정한
-	// 인덱스에 따라 배열의 크기가 결정됩니다.
-	int dataTable[ ] = {10, 20, 30};
-
-	for (int i = 0; i < 3; i++)
-	{
-		printf("dataTable[%d]의 값 : %d\n", i, dataTable[i]);
-	}
-	*/
-
-	// 배열의 주소
-	/*
-	int value[3] = { 5,10,15 };
-
-	printf("value 배열의 주소 : %p\n", value);
-	printf("value[0]의 주소 : %p\n", &value[0]);
-
-	// 배열은 연속적인 메모리 공간을 가지며, 배열의 이름은
-	// 배열의 시작 주소를 의미합니다.
-
-	int * ptr = value;
-	*ptr = 9999;
-
-	printf("value[0]의 값 : %d\n", value[0]);
-
-	ptr = ptr + 1;
-
-	*ptr = 3333;
-
-	printf("value[1]의 값 : %d\n", value[1]);
-	*/
-
-	// 최댓값과 최솟값
-	/*
-	int count[5] = { 1, 33, 7, 2, 6 };
-
-	int max = 0;
-	int min = 9999;
-
-	for (int i = 0; i < 5; i++)
-	{
-		if (max < count[i])
-		{
-			max = count[i];
-		}
-				
-		if (min > count[i])
-		{
-			min = count[i];
-		}
-	}
-
-	printf("최댓값 : %d\n", max);
-	printf("최솟값 : %d\n", min);
-    */
-
-	// 범용 포인터란?
-	// 자료형이 정해지지 않은 상태로 모든 자료형을 저장할 수 있는
-	// 포인터입니다.
-
-	char grade = 'A';
-	int age = 19;
-	float weight = 70.5f;
-
-	void * vPtr = &grade;
-
-	// 범용 포인터는 현재 가리키는 자료형이 정해져 있지 않아
-	// 값을 변경할 수 없습니다.
-	// *vPtr = 'B';
-
-	*(char*)vPtr = 'B';
-	printf("grade의 값 : %c\n", grade);
-
-	// 범용 포인터로 변수의 메모리에 접근하려면 범용 포인터가 가리키는
-	// 변수의 자료형으로 형 변환을 해주어야 합니다.
-
-	vPtr = &age;
-	*(int*)vPtr = 26;
-	printf("age의 값 : %d\n", age);
-
-
+	return 0;
 }
